@@ -2,7 +2,6 @@ const{token, prefix} = require('./config.json');
 const DisCord = require('discord.js');
 const client = new DisCord.Client();
 const ytdl = require('ytdl-core');
-const ytsr = require('ytsr');
 
 client.login(token);
 client.on('ready', ()=> {
