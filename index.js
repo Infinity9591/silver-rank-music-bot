@@ -67,13 +67,9 @@ client.on(`message`, async message => {
         var embedPlay = {
             color:'#00FFFF',
             description: `:notes: Thêm vào hàng chờ: ${song.title}`,
-            thumbnail: {
-                url:'https://pbs.twimg.com/media/FZ1oM4MX0AE0jbA?format=jpg&name=900x900' /*Sage*/
-            },
             timestamp: new Date(),
             footer: {
-                text: 'Create by Infinity9591 with GitHub Source',
-                icon_url: 'https://static.tvtropes.org/pmwiki/pub/images/genshin_memetic.jpg'
+                text: 'Create by Infinity9591'
             }
         }
         const serverQueue = queues.get(message.guild.id);
@@ -98,13 +94,9 @@ client.on(`message`, async message => {
         var embedStop = {
             color: '00FFFF',
             description: `:notes: Đã tắt hết list rồi ehe.`,
-            thumbnail: {
-                url: 'https://images3.alphacoders.com/120/1202656.jpg' /*Kayo*/
-            },
             timestamp: new Date(),
             footer: {
-                text: 'Create by Infinity9591 with GitHub Source',
-                icon_url: 'https://static.tvtropes.org/pmwiki/pub/images/genshin_memetic.jpg'
+                text: 'Create by Infinity9591 with GitHub Source'
             }
         };
         message.channel.send({embed:embedStop});
@@ -115,15 +107,10 @@ client.on(`message`, async message => {
         if (!serverQueue) return message.reply("Thêm bài hát hoặc tao sủi.");
         var embedSkip = {
             color:'#00FFFF',
-            // title:'Bỏ qua ',
             description:`:notes: Bỏ qua bài: ${serverQueue.songs[0].title}`,
-            thumbnail: {
-                url:'https://i.ytimg.com/vi/tomyYkKEC3U/maxresdefault.jpg' /*Chamber*/
-            },
             timestamp: new Date(),
             footer: {
-                text: 'Create by Infinity9591 with GitHub Source',
-                icon_url: 'https://static.tvtropes.org/pmwiki/pub/images/genshin_memetic.jpg'
+                text: 'Create by Infinity9591'
             }
         }
         if (serverQueue.songs.length==1){
@@ -139,15 +126,10 @@ client.on(`message`, async message => {
         const serverQueue = queues.get(message.guild.id);
         var embedPause = {
             color:'#00FFFF',
-            // title:'List lệnh:',
             description:`:notes: Đã tạm dừng ${serverQueue.songs[0].title}`,
-            thumbnail: {
-                url:'https://images8.alphacoders.com/114/thumb-1920-1149389.jpg' /*Killjoy*/
-            },
             timestamp: new Date(),
                 footer: {
-                text: 'Create by Infinity9591 with GitHub Source',
-                    icon_url: 'https://static.tvtropes.org/pmwiki/pub/images/genshin_memetic.jpg'
+                text: 'Create by Infinity9591'
             }
         }
         if (!serverQueue) return message.reply("Thêm bài!");
@@ -162,13 +144,9 @@ client.on(`message`, async message => {
         var embedResume = {
             color:'#00FFFF',
             description:`Đã bật lại ${serverQueue.songs[0].title}`,
-            thumbnail: {
-                url:'https://w0.peakpx.com/wallpaper/190/346/HD-wallpaper-jett-in-purple-dress-valorant.jpg' /*Jett*/
-            },
             timestamp: new Date(),
             footer: {
-                text: 'Create by Infinity9591 with GitHub Source',
-                icon_url: 'https://static.tvtropes.org/pmwiki/pub/images/genshin_memetic.jpg'
+                text: 'Create by Infinity9591',
             }
         }
         serverQueue.playing = true;
@@ -182,13 +160,9 @@ client.on(`message`, async message => {
         var embedRepeat = {
             color:'#00FFFF',
             description:`:notes: Lặp lại bài: ${serverQueue.songs[0].title}`,
-            // thumbnail: {
-            //     url:'https://pbs.twimg.com/media/FZ1oM4MX0AE0jbA?format=jpg&name=900x900'
-            // },
             timestamp: new Date(),
             footer: {
-                text: 'Create by Infinity9591 with GitHub Source',
-                icon_url: 'https://static.tvtropes.org/pmwiki/pub/images/genshin_memetic.jpg'
+                text: 'Create by Infinity9591',
             }
         }
         serverQueue.repeat = true;
@@ -200,13 +174,9 @@ client.on(`message`, async message => {
         var embedOffepeat = {
             color:'#00FFFF',
             description:`:notes: Ngừng lặp lại bài: ${serverQueue.songs[0].title}`,
-            // thumbnail: {
-            //     url:'https://pbs.twimg.com/media/FZ1oM4MX0AE0jbA?format=jpg&name=900x900'
-            // },
             timestamp: new Date(),
             footer: {
-                text: 'Create by Infinity9591 with GitHub Source',
-                icon_url: 'https://static.tvtropes.org/pmwiki/pub/images/genshin_memetic.jpg'
+                text: 'Create by Infinity9591'
             }
         }
         if (!serverQueue) return message.reply("((((=??");
@@ -222,15 +192,10 @@ client.on(`message`, async message => {
         }).join('\n');
         var embedQueue = {
             color:'#00FFFF',
-            // title:'List lệnh:',
             description:`${result}`,
-            thumbnail: {
-                url:'https://preview.redd.it/i8udri6j1xg81.png?width=1655&format=png&auto=webp&s=b60ac989a849a1a33b57e0db69707516614f062e' /*Sova*/
-            },
             timestamp: new Date(),
             footer: {
-                text: 'Create by Infinity9591 with GitHub Source',
-                icon_url: 'https://static.tvtropes.org/pmwiki/pub/images/genshin_memetic.jpg'
+                text: 'Create by Infinity9591',
             }
         }
         message.channel.send({embed:embedQueue});
@@ -241,13 +206,9 @@ client.on(`message`, async message => {
             color:'#00FFFF',
             title:'List lệnh:',
             description:'\n~help: Bảng lệnh\n~ping: Check độ trễ\n~play + url: Chơi nhạc\n~stop: Dừng nhạc\n~skip: Bỏ qua bài nhac\n~pause: Tạm dừng nhạc\n~resume: Tiếp tục phát nhạc\n~repeat: Bật lặp lại\n~offrepeat: Tắt lặp lại\n~queue: List nhạc dang chờ\nCó lệnh ẩn đấy, giỏi thì tìm đi.',
-            thumbnail: {
-                url:'https://wallpapercave.com/wp/wp6438243.jpg' /*Cypher*/
-            },
             timestamp: new Date(),
             footer: {
-                text: 'Create by Infinity9591 with GitHub Source',
-                icon_url: 'https://static.tvtropes.org/pmwiki/pub/images/genshin_memetic.jpg'
+                text: 'Create by Infinity9591'
             }
         }
         message.channel.send({ embed: embedHelp });
@@ -270,13 +231,9 @@ async function playSong(message) {
         color:'#00FFFF',
         title:'Nghe nhạc nào. =)))',
         description: `:notes: Bắt đầu phát: ${song.title}`,
-        thumbnail: {
-            url:'https://pbs.twimg.com/media/FZ1oM4MX0AE0jbA?format=jpg&name=900x900' /*Sage*/
-        },
         timestamp: new Date(),
         footer: {
-            text: 'Create by Infinity9591 with GitHub Source',
-            icon_url: 'https://static.tvtropes.org/pmwiki/pub/images/genshin_memetic.jpg'
+            text: 'Create by Infinity9591',
         }
     }
     if (serverQueue.repeat==true) return;
