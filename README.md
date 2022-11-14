@@ -2,6 +2,7 @@
 My first simple music bot by JavaScript.
 
 #VN
+
 Người Việt nên xài tiếng Việt vậy. =)))
 Đầu tiên là cài đặt node.js đã, code này phù hợp với node.js 14.16.1 trở xuống, cài cái mới hơn nó không chạy ráng chịu.
 
