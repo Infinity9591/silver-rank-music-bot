@@ -8,4 +8,7 @@
   },
   "author": "Infinity",
   "license": "ISC",
+  "dependencies:{
+  
+  }
 }
