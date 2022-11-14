@@ -7,4 +7,5 @@ ffmpeg-static~=5.1.0
 fluent-ffmpeg~=2.1.2
 ytdl-core~=4.11.2
 
-npm i @discordjs/voice discord-player discord.js dotenv ffmpeg ffmpeg-static fluent-ffmpeg ytdl-core @discordjs/opus
+npm i @discordjs/voice@0.13.0 discord.js@12.5.3 dotenv@16.0.3 ffmpeg@0.0.4 ffmpeg-static@5.1.0 fluent-ffmpeg@2.1.2 ytdl-core@4.11.2 @discordjs/opus@0.8.0
+
