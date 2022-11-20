@@ -44,10 +44,6 @@ client.on(`message`, async message => {
         const timeTaken = Date.now() - message.createdTimestamp;
         message.channel.send(`Act kool, mất ${timeTaken}ms để hết đứng hình.`);
     }
-    if (cmd==="off"){
-        console.log(`${client.user.tag} is logged out.`);
-        client.destroy();
-    }
 
     if (cmd==='play'){
         let voiceChannel = message.member.voice.channel;
@@ -62,7 +58,6 @@ client.on(`message`, async message => {
         let video = await ytdl.getInfo(url);
         if (!video) return message.reply("Gõ lại url hoặc tao sút đít.");
         const song = new Song(video.videoDetails.title, video.videoDetails.video_url);
-        console.log(song);
         var embedPlay = {
             color:'#00FFFF',
             description: `:notes: Thêm vào hàng chờ: ${song.title}`,
@@ -226,17 +221,6 @@ async function playSong(message) {
     let song = serverQueue.songs[0];
     let dispatcher = serverQueue.connection.play(ytdl(song.url, {filter: 'audioonly', highWaterMark: 1<<25, type: 'opus'}));
     dispatcher.setVolume(serverQueue.volume/100);
-    var embedPlay = {
-        color:'#00FFFF',
-        title:'Nghe nhạc nào. =)))',
-        description: `:notes: Bắt đầu phát: ${song.title}`,
-        timestamp: new Date(),
-        footer: {
-            text: 'Create by Infinity9591',
-        }
-    }
-    if (serverQueue.repeat==true) return;
-    else message.channel.send({embed:embedPlay});
     dispatcher.on('finish', () => {
         if (!serverQueue.repeat) serverQueue.songs.shift();
         return playSong(message);
