@@ -107,7 +107,7 @@ client.on(`message`, async message => {
                 text: 'Create by Infinity9591'
             }
         }
-        if (serverQueue.songs.length==1){
+        if (serverQueue.songs.length<1){
             serverQueue.songs=[];
             serverQueue.connection.dispatcher.end();
         } else {
