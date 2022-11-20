@@ -11,4 +11,6 @@ Người Việt nên xài tiếng Việt vậy. =)))
 3. Vào file config.json, nhập token của bot vào phần token, nhập tiền tố bạn muốn gọi bot vào prefix. Nó là mấy cái ! / mà khi bạn gõ /play thì con bot nó sẽ chạy ấy, kiểu kiểu thế.
 4. Rồi thì mời bot vào sv và chạy đi chứ còn gì nữa, gõ 'prefix'help để biết commands có những gì nhé.
 
+Nói chung là sẽ có hướng dẫn chi tiết. =))) Cứ từ từ nhé.
+
 Goodluck, cái này nó rất đơn giản và mình dùng để học JavaScript thôi. Muốn thêm hay phát triển từ từ nhé.
