@@ -144,7 +144,7 @@ client.on(`message`, async message => {
             }
         }
         serverQueue.playing = true;
-        serverQueue.connection.dispatcher.resume();
+        serverQueue.connection.dispatcher.resume(message);
         message.channel.send({ embed: embedResume });
         return;
     }

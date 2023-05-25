@@ -1,12 +1,11 @@
 # silver-rank-music-bot
-My first simple music bot 
-
+My first simple music bot.
 Created by JavaScript.
 
 #VN
 
 Người Việt nên xài tiếng Việt vậy. =)))
-Đầu tiên là cài đặt node.js đã, code này phù hợp với node.js 14.16.1 trở xuống, cài cái mới hơn nó không chạy ráng chịu.
+Đầu tiên là cài đặt node.js đã, đã update nên giờ cài bản mới nhất (hình như là v18) vẫn dùng được. 
 
 1. Tạo con bot trên discord, lên gg mà tìm. =))) Nhưng nhớ để ý cái token, cái này quan trọng.
 2. Mở requirements.txt, copy lệnh dưới cùng, chạy nó trong cmd trỏ tới folder chứa đống nguồn này. Lỗi lên gg. =)))))
