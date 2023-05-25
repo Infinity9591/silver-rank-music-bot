@@ -2,6 +2,7 @@ const{token, prefix} = require('./config.json');
 const DisCord = require('discord.js');
 const client = new DisCord.Client();
 const ytdl = require('ytdl-core');
+const {getVideoInfo} = require('youtube-video-exists');
 
 client.login(token);
 client.on('ready', ()=> {
@@ -47,6 +48,7 @@ client.on(`message`, async message => {
 
     if (cmd==='play'){
         let voiceChannel = message.member.voice.channel;
+        // let voiceChannel = message.member.voice;
         if (!voiceChannel) return message.reply("Vào voice hoặc có cl tao bật nhạc cho nghe.");
         let permissions = message.member.voice.channel.permissionsFor(message.client.user);
         if (!permissions.has('CONNECT')||!permissions.has('SPEAK')) return message.reply(`Cấp quyền đi thanglon. <(") `);
@@ -55,30 +57,52 @@ client.on(`message`, async message => {
             message.channel.send("Bắt tao phát nhạc câm à? Điền cái url vào!");
             return;
         }
-        let video = await ytdl.getInfo(url);
-        if (!video) return message.reply("Gõ lại url hoặc tao sút đít.");
-        const song = new Song(video.videoDetails.title, video.videoDetails.video_url);
-        var embedPlay = {
-            color:'#00FFFF',
-            description: `:notes: Thêm vào hàng chờ: ${song.title}`,
-            timestamp: new Date(),
-            footer: {
-                text: 'Create by Infinity9591'
+        if (!ytdl.validateURL(url)) {
+            return message.reply("Hỗ trợ link video Youtube thôi, gimme link video Youtube or bị đút đít");
+        }
+        else {
+            let str = "";
+            for (let i=0; i<url.length-2; i++)
+            {
+                if (url[i] === 'v' && url[i+1] === '='){
+                    for (let j=i+2; j<url.length; j++){
+                        str+=url[j];
+                    }
+                }
             }
+            let check = getVideoInfo(str);
+            if ((await check).existing){
+                let video = await ytdl.getInfo(url);
+                const song = new Song(video.videoDetails.title, video.videoDetails.video_url);
+                console.log(song);
+                var embedPlay = {
+                    color:'#00FFFF',
+                    description: `:notes: Thêm vào hàng chờ: ${song.title}`,
+                    thumbnail: {
+                        url:'https://pbs.twimg.com/media/FZ1oM4MX0AE0jbA?format=jpg&name=900x900' /*Sage*/
+                    },
+                    timestamp: new Date(),
+                    footer: {
+                        text: 'Create by Infinity9591 with GitHub Source',
+                        icon_url: 'https://static.tvtropes.org/pmwiki/pub/images/genshin_memetic.jpg'
+                    }
+                }
+                const serverQueue = queues.get(message.guild.id);
+                if (!serverQueue) {
+                    let queue = new Queue(voiceChannel);
+                    queues.set(message.guild.id, queue);
+                    queue.songs.push(song);
+                    let connection = await voiceChannel.join();
+                    queue.connection = connection;
+                    playSong(message);
+                } else {
+                    serverQueue.songs.push(song);
+                    message.channel.send({embed:embedPlay})
+                }
+                return;
+            } else return message.reply("Gõ lại url hoặc tao sút đít.");
         }
-        const serverQueue = queues.get(message.guild.id);
-        if (!serverQueue) {
-            let queue = new Queue(voiceChannel);
-            queues.set(message.guild.id, queue);
-            queue.songs.push(song);
-            let connection = await voiceChannel.join();
-            queue.connection = connection;
-            playSong(message);
-        } else {
-            serverQueue.songs.push(song);
-            message.channel.send({embed:embedPlay})
-        }
-        return;
+
     }
     if (cmd === 'stop') {
         const serverQueue = queues.get(message.guild.id);
