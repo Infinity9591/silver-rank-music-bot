@@ -145,6 +145,8 @@ client.on(`message`, async message => {
         }
         serverQueue.playing = true;
         serverQueue.connection.dispatcher.resume(message);
+        serverQueue.connection.dispatcher.pause(message);
+        serverQueue.connection.dispatcher.resume(message);
         message.channel.send({ embed: embedResume });
         return;
     }
@@ -182,7 +184,7 @@ client.on(`message`, async message => {
         const serverQueue = queues.get(message.guild.id);
         if (!serverQueue) return message.reply("List trống như lượng người yêu mày có vậy.");
         let result = serverQueue.songs.map((song, i) => {
-            return `${(i == 0) ? `\`Đang phát:\`` : `${i}.`} ${song.title}`
+            return `${(i === 0) ? `\`Đang phát:\`` : `${i}.`} ${song.title}`
         }).join('\n');
         var embedQueue = {
             color:'#00FFFF',
