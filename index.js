@@ -229,7 +229,7 @@ client.on(`message`, async message => {
         var embedHelp = {
             color:'#00FFFF',
             title:'List lệnh:',
-            description:'\n~help: Bảng lệnh\n~ping: Check độ trễ\n~play + url: Chơi nhạc\n~stop: Dừng nhạc\n~skip: Bỏ qua bài nhac\n~pause: Tạm dừng nhạc\n~resume: Tiếp tục phát nhạc\n~repeat: Bật lặp lại\n~offrepeat: Tắt lặp lại\n~queue: List nhạc dang chờ\nCó lệnh ẩn đấy, giỏi thì tìm đi.',
+            description:'\n~help: Bảng lệnh\n~ping: Check độ trễ\n~play + url: Chơi nhạc\n~stop: Dừng nhạc\n~skip: Bỏ qua bài nhac\n~pause: Tạm dừng nhạc\n~resume: Tiếp tục phát nhạc\n~repeat: Bật lặp lại\n~offrepeat: Tắt lặp lại\n~queue: List nhạc dang chờ\n~leave : Rời kênh voice\nCó lệnh ẩn đấy, giỏi thì tìm đi.',
             timestamp: new Date(),
             footer: {
                 text: 'Create by Infinity9591'
@@ -237,15 +237,19 @@ client.on(`message`, async message => {
         }
         message.channel.send({ embed: embedHelp });
     }
-
+    if (cmd === 'leave'){
+        const serverQueue = queues.get(message.guild.id);
+        if (!serverQueue) return;
+        serverQueue.voiceChannel.leave();
+        queues.delete(message.guild.id);
+        message.channel.send("Cook đây");
+    }
 })
 
 async function playSong(message) {
     const serverQueue = queues.get(message.guild.id);
     if (!serverQueue) return;
     if (serverQueue.songs.length < 1) {
-        serverQueue.voiceChannel.leave();
-        queues.delete(message.guild.id);
         return message.channel.send("Hết nhạc rồi, phắn đây.");
     }
     let song = serverQueue.songs[0];
