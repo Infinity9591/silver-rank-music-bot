@@ -17,4 +17,4 @@ Nói chung là sẽ có hướng dẫn chi tiết. =))) Cứ từ từ nhé.
 
 Goodluck, cái này nó rất đơn giản và mình dùng để học JavaScript thôi. Muốn thêm hay phát triển từ từ nhé.
 
-*Note :  Hiện tại con bot đã bị outdate khá là GAY go, tỉ lệ chạy được chỉ tầm 50/50 nên mình sẽ drop update con bot này nhé. Mình sẽ viết lại con mới và cập nhật một pj mới sau.
+***Note :  Hiện tại con bot đã bị outdate khá là GAY go, tỉ lệ chạy được chỉ tầm 50/50 nên mình sẽ drop update con bot này nhé. Mình sẽ viết lại con mới và cập nhật một pj mới sau.***
